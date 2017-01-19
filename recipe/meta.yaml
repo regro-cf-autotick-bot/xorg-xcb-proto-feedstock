@@ -12,20 +12,23 @@ source:
   fn: {{ name }}-{{ version }}.tar.bz2
   url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.bz2
   sha256: {{ sha256 }}
+  patches:
+    - python-35x-fixes.patch
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
-  skip: true  # [not py27]
 
 requirements:
   build:
     - m2w64-pkg-config  # [win]
     - pkg-config  # [not win]
     - posix  # [win]
-    - python >=2.7,<3
+    - python
     - toolchain
     - xorg-util-macros
+  run:
+    - python
 
 test:
   commands:
