@@ -15,9 +15,10 @@ source:
   sha256: {{ sha256 }}
   patches:
     - python-35x-fixes.patch
+    - windows-pythondir.patch  # [win]
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -36,6 +37,8 @@ requirements:
     - python
 
 test:
+  imports:
+    - xcbgen
   commands:
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
