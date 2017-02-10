@@ -1,3 +1,6 @@
+# !!!! This package (xorg-xcb-proto) has been deprecated in favor of
+# `xcb-proto` for compatibility with Anaconda `defaults` !!!!
+
 {% set xorg_name = "xcb-proto" %}
 {% set xorg_category = "xcb" %}
 {% set name = "xorg-" ~ xorg_name %}
@@ -18,6 +21,7 @@ source:
     - windows-pythondir.patch  # [win]
 
 build:
+  skip: true # !!!!!!!
   number: 3
   detect_binary_files_with_prefix: true
 
